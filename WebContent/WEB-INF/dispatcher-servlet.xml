@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+  <import resource="/DataSource.xml"/>
+	<import resource="/Hibernate.xml"/>
+	<import resource="/Transaction.xml"/>
+	
+	<!-- enable the configuration of transactional behavior based on annotations -->
+  <tx:annotation-driven transaction-manager="transactionManager"/>
+  
+  <aop:config>
+         <aop:pointcut id="serviceOperation"  expression="execution(* org.imbibe.service.impl.*Service.*(..))"/>
+        <aop:advisor pointcut-ref="serviceOperation" advice-ref="txAdvice"/>
+  </aop:config>
+  
+  <!-- the transactional advice (i.e. what 'happens'; see the <aop:advisor/> bean below) -->
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <!-- the transactional semantics... -->
+    <tx:attributes>
+      <!-- all methods starting with 'get' are read-only -->
+      <tx:method name="get*" read-only="true"/>
+      <!-- other methods use the default transaction settings (see below) -->
+      <tx:method name="*"/>
+    </tx:attributes>
+  </tx:advice>
+  <context:annotation-config/>
+   <context:component-scan base-package="org.imbibe" />
+    <mvc:annotation-driven />  
+   
+   
+  <!--   <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/index.html">indexController</prop>
+            </props>
+        </property>
+    </bean> -->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/jsp/"
+          p:suffix=".jsp" />
+    <bean name="indexController"  class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+          
+          
+            <!-- For Domain setting -->
+           <!--  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+              <property name="host" value="mailhost"/>
+            </bean>  -->
+            <!-- For Authentication required ones -->
+            <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+            <property name="host" value="smtp.gmail.com" />
+            <property name="port" value="587" />
+            <property name="username" value="nchinthakindi3" />
+            <property name="password" value="password@1234" />
+            
+            <property name="javaMailProperties">
+                  <props>
+                  <prop key="mail.smtp.auth">true</prop>
+                  <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+            </property> 
+            
+      </bean>-->
+
+            <!-- this is a template message that we can pre-load with default state -->
+            <!-- <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+
+            <property name="from" value="from@no-spam.com" />
+            <property name="to" value="nchinthakindi@allianceglobalservices.com" />
+            <property name="subject" value="Testing Subject" />
+            <property name="text" value="Hello">
+      </property>
+      </bean> -->
+          
+  
+  
+	
+	
+</beans>
