@@ -13,10 +13,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
   <import resource="/DataSource.xml"/>
-	<import resource="/Hibernate.xml"/>
-	<import resource="/Transaction.xml"/>
-	
-	<!-- enable the configuration of transactional behavior based on annotations -->
+  <import resource="/hibernate.cfg.xml"/>
+  <import resource="/Transaction.xml"/>
+   	
+  <!-- enable the configuration of transactional behavior based on annotations -->
   <tx:annotation-driven transaction-manager="transactionManager"/>
   
   <aop:config>
@@ -30,6 +30,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
     <tx:attributes>
       <!-- all methods starting with 'get' are read-only -->
       <tx:method name="get*" read-only="true"/>
+      <tx:method name="verify*" read-only="true"/>
       <!-- other methods use the default transaction settings (see below) -->
       <tx:method name="*"/>
     </tx:attributes>
@@ -47,6 +48,10 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
             </props>
         </property>
     </bean> -->
+    
+     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+  
+  
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/jsp/"
@@ -60,7 +65,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
               <property name="host" value="mailhost"/>
             </bean>  -->
             <!-- For Authentication required ones -->
-            <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+            <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
             <property name="host" value="smtp.gmail.com" />
             <property name="port" value="587" />
             <property name="username" value="nchinthakindi3" />
@@ -73,7 +78,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
             </props>
             </property> 
             
-      </bean>-->
+      </bean>
 
             <!-- this is a template message that we can pre-load with default state -->
             <!-- <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
@@ -86,7 +91,20 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
       </bean> -->
           
   
-  
+    <mvc:interceptors>
+        <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+                <property name="cacheSeconds" value="0"/>
+                <property name="useExpiresHeader" value="false"/>
+                <property name="useCacheControlHeader" value="true"/>
+                <property name="useCacheControlNoStore" value="true"/>
+            </bean>     
+        </mvc:interceptors> 
+        
+      <!--  <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+               <property name="cacheSeconds" value="0" />
+       </bean>
+ -->
+        
 	
 	
 </beans>

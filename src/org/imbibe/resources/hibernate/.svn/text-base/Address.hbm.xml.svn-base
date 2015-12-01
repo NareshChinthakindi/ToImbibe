@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.imbibe.vo.AddressVo" table="address" catalog="imbibe">
+ 
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        
+         <property name="address" type="string">
+            <column name="address" length="256" not-null="true" />
+        </property>
+        
+         <property name="state" type="string">
+            <column name="state" length="256" not-null="true" />
+        </property>
+        
+         <property name="country" type="string">
+            <column name="country" length="256" not-null="true" />
+        </property>
+        
+         <property name="pin" type="string">
+            <column name="pin" not-null="true" />
+        </property>
+        
+         <property name="mobileNumber" type="string">
+            <column name="mobile_number" length="256" not-null="true" />
+        </property>
+        
+    </class>
+    
+</hibernate-mapping>

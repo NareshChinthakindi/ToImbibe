@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/ToImbibe/!svn/ver/74/workspace/src/org/imbibe/resources/hibernate
+END
+UserRoles.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ToImbibe/!svn/ver/70/workspace/src/org/imbibe/resources/hibernate/UserRoles.hbm.xml
+END
+Address.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ToImbibe/!svn/ver/68/workspace/src/org/imbibe/resources/hibernate/Address.hbm.xml
+END
+SecuirtyQuestions.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ToImbibe/!svn/ver/64/workspace/src/org/imbibe/resources/hibernate/SecuirtyQuestions.hbm.xml
+END
+User.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ToImbibe/!svn/ver/74/workspace/src/org/imbibe/resources/hibernate/User.hbm.xml
+END

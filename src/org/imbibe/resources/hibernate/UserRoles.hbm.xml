@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.imbibe.vo.UserRolesVo" table="user_roles" catalog="imbibe">
+ 
+        <id name="userRoleId" type="java.lang.Integer">
+            <column name="USER_ROLE_ID" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="userId" type="java.lang.Integer">
+            <column name="USER_ID" not-null="true" />
+        </property>
+        
+        <property name="authority" type="string">
+            <column name="AUTHORITY" length="256" not-null="true" />
+        </property>
+        
+        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/ToImbibe/!svn/ver/84/workspace/WebContent/WEB-INF
+END
+hibernate.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ToImbibe/!svn/ver/65/workspace/WebContent/WEB-INF/hibernate.cfg.xml
+END
+Transaction.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/ToImbibe/!svn/ver/16/workspace/WebContent/WEB-INF/Transaction.xml
+END
+dispatcher-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/ToImbibe/!svn/ver/84/workspace/WebContent/WEB-INF/dispatcher-servlet.xml
+END
+sun-web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/ToImbibe/!svn/ver/16/workspace/WebContent/WEB-INF/sun-web.xml
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/ToImbibe/!svn/ver/57/workspace/WebContent/WEB-INF/web.xml
+END
+DataSource.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ToImbibe/!svn/ver/16/workspace/WebContent/WEB-INF/DataSource.xml
+END
+security-app-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ToImbibe/!svn/ver/84/workspace/WebContent/WEB-INF/security-app-context.xml
+END
